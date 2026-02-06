@@ -1,0 +1,1759 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant La Estación - Tradición Ferrocarrilera en Aguascalientes</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;700;900&family=Lora:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        /* ========================================
+           VARIABLES DE COLOR Y TEMA
+           ======================================== */
+        :root {
+            /* Paleta inspirada en la tradición ferrocarrilera y mexicana */
+            --color-primary: #8B4513; /* Café oscuro terracota - rieles antiguos */
+            --color-secondary: #D4A574; /* Dorado arena - metal envejecido */
+            --color-accent: #C85A54; /* Rojo teja - tradicional mexicano */
+            --color-dark: #2C1810; /* Café muy oscuro - madera antigua */
+            --color-cream: #F5EFE7; /* Crema cálido - papel viejo */
+            --color-warm: #FFF8F0; /* Blanco cálido - luz natural */
+            
+            /* Tipografía elegante y editorial */
+            --font-display: 'Playfair Display', serif;
+            --font-body: 'Lora', serif;
+            
+            /* Espaciados y tamaños */
+            --spacing-xs: 0.5rem;
+            --spacing-sm: 1rem;
+            --spacing-md: 2rem;
+            --spacing-lg: 4rem;
+            --spacing-xl: 6rem;
+            
+            /* Sombras sutiles */
+            --shadow-sm: 0 2px 8px rgba(44, 24, 16, 0.08);
+            --shadow-md: 0 4px 16px rgba(44, 24, 16, 0.12);
+            --shadow-lg: 0 8px 32px rgba(44, 24, 16, 0.16);
+        }
+
+        /* ========================================
+           RESET Y ESTILOS BASE
+           ======================================== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: var(--font-body);
+            color: var(--color-dark);
+            background: var(--color-warm);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        /* ========================================
+           HEADER - NAVEGACIÓN FIJA
+           ======================================== */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(245, 239, 231, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: var(--shadow-sm);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        header.scrolled {
+            padding: 0.5rem 0;
+            box-shadow: var(--shadow-md);
+        }
+
+        nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1.2rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            font-weight: 900;
+            color: var(--color-primary);
+            text-decoration: none;
+            letter-spacing: -0.02em;
+            position: relative;
+        }
+
+        .logo::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: var(--color-accent);
+            transition: width 0.3s ease;
+        }
+
+        .logo:hover::after {
+            width: 100%;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--color-dark);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            letter-spacing: 0.02em;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a::before {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 2px;
+            background: var(--color-accent);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--color-accent);
+        }
+
+        .nav-links a:hover::before {
+            width: 100%;
+        }
+
+        /* Botón móvil de menú */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 6px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+        }
+
+        .menu-toggle span {
+            width: 28px;
+            height: 3px;
+            background: var(--color-primary);
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        /* ========================================
+           SECCIÓN HERO - IMPACTO VISUAL
+           ======================================== */
+        .hero {
+            margin-top: 80px;
+            height: 85vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            background: linear-gradient(135deg, #2C1810 0%, #5C3D2E 50%, #8B4513 100%);
+        }
+
+        /* Patrón decorativo de fondo */
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                repeating-linear-gradient(45deg, 
+                    transparent, 
+                    transparent 60px, 
+                    rgba(212, 165, 116, 0.03) 60px, 
+                    rgba(212, 165, 116, 0.03) 120px);
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            text-align: center;
+            color: var(--color-cream);
+            z-index: 2;
+            max-width: 900px;
+            padding: 2rem;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-subtitle {
+            font-size: 1.1rem;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--color-secondary);
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+            animation: fadeInUp 1s ease-out 0.2s both;
+        }
+
+        .hero h1 {
+            font-family: var(--font-display);
+            font-size: clamp(3rem, 8vw, 6.5rem);
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.03em;
+            animation: fadeInUp 1s ease-out 0.4s both;
+        }
+
+        .hero-tagline {
+            font-size: 1.5rem;
+            margin-bottom: 3rem;
+            color: var(--color-secondary);
+            font-style: italic;
+            animation: fadeInUp 1s ease-out 0.6s both;
+        }
+
+        .hero-cta {
+            display: inline-block;
+            padding: 1.2rem 3.5rem;
+            background: var(--color-accent);
+            color: white;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            border-radius: 0;
+            box-shadow: var(--shadow-lg);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            animation: fadeInUp 1s ease-out 0.8s both;
+        }
+
+        .hero-cta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.2);
+            transition: left 0.4s ease;
+        }
+
+        .hero-cta:hover::before {
+            left: 100%;
+        }
+
+        .hero-cta:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 40px rgba(200, 90, 84, 0.4);
+        }
+
+        /* ========================================
+           SECCIÓN NOSOTROS
+           ======================================== */
+        .about {
+            padding: var(--spacing-xl) 2rem;
+            background: var(--color-cream);
+            position: relative;
+        }
+
+        .about::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80%;
+            height: 1px;
+            background: linear-gradient(90deg, 
+                transparent 0%, 
+                var(--color-secondary) 50%, 
+                transparent 100%);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .section-subtitle {
+            font-size: 0.95rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--color-accent);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 900;
+            color: var(--color-primary);
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--color-dark);
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+        }
+
+        .highlight {
+            background: linear-gradient(180deg, transparent 60%, rgba(212, 165, 116, 0.3) 60%);
+            padding: 0 4px;
+            font-weight: 600;
+        }
+
+        .about-features {
+            display: grid;
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 2rem;
+            border-left: 4px solid var(--color-accent);
+            box-shadow: var(--shadow-sm);
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateX(8px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .feature-card h3 {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            color: var(--color-primary);
+            margin-bottom: 0.8rem;
+        }
+
+        .feature-card p {
+            color: #5C3D2E;
+            line-height: 1.7;
+        }
+
+        /* ========================================
+           SECCIÓN MENÚ
+           ======================================== */
+        .menu {
+            padding: var(--spacing-xl) 2rem;
+            background: white;
+        }
+
+        .menu-categories {
+            display: grid;
+            gap: 4rem;
+            margin-top: 3rem;
+        }
+
+        .category {
+            border-bottom: 2px solid var(--color-cream);
+            padding-bottom: 3rem;
+        }
+
+        .category:last-child {
+            border-bottom: none;
+        }
+
+        .category-title {
+            font-family: var(--font-display);
+            font-size: 2.2rem;
+            color: var(--color-primary);
+            margin-bottom: 2rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .category-title::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: var(--color-accent);
+        }
+
+        .menu-items {
+            display: grid;
+            gap: 2rem;
+        }
+
+        .menu-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 2rem;
+            padding: 1.5rem;
+            background: var(--color-warm);
+            transition: all 0.3s ease;
+        }
+
+        .menu-item:hover {
+            background: var(--color-cream);
+            transform: translateX(8px);
+        }
+
+        .menu-item-info {
+            flex: 1;
+        }
+
+        .menu-item-name {
+            font-family: var(--font-display);
+            font-size: 1.4rem;
+            color: var(--color-primary);
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .menu-item-description {
+            color: #5C3D2E;
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        .menu-item-price {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            color: var(--color-accent);
+            font-weight: 700;
+            white-space: nowrap;
+        }
+
+        /* ========================================
+           ESPECIALIDADES - PLATILLOS DESTACADOS
+           ======================================== */
+        .specialties {
+            padding: var(--spacing-xl) 2rem;
+            background: var(--color-cream);
+        }
+
+        .specialties-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .specialty-card {
+            background: white;
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+        }
+
+        .specialty-card:hover {
+            transform: translateY(-12px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .specialty-image {
+            width: 100%;
+            height: 280px;
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: rgba(255, 255, 255, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .specialty-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                repeating-linear-gradient(45deg,
+                    transparent,
+                    transparent 20px,
+                    rgba(255, 255, 255, 0.05) 20px,
+                    rgba(255, 255, 255, 0.05) 40px);
+        }
+
+        .specialty-content {
+            padding: 2rem;
+        }
+
+        .specialty-name {
+            font-family: var(--font-display);
+            font-size: 1.8rem;
+            color: var(--color-primary);
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .specialty-description {
+            color: #5C3D2E;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .specialty-badge {
+            display: inline-block;
+            padding: 0.5rem 1.2rem;
+            background: var(--color-accent);
+            color: white;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+
+        /* ========================================
+           SECCIÓN RESERVACIONES
+           ======================================== */
+        .reservations {
+            padding: var(--spacing-xl) 2rem;
+            background: linear-gradient(135deg, var(--color-primary) 0%, #5C3D2E 100%);
+            color: white;
+            position: relative;
+        }
+
+        .reservations::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                repeating-linear-gradient(45deg,
+                    transparent,
+                    transparent 80px,
+                    rgba(212, 165, 116, 0.05) 80px,
+                    rgba(212, 165, 116, 0.05) 160px);
+        }
+
+        .reservations .container {
+            position: relative;
+            z-index: 2;
+        }
+
+        .reservations .section-subtitle {
+            color: var(--color-secondary);
+        }
+
+        .reservations .section-title {
+            color: white;
+        }
+
+        .reservation-form {
+            max-width: 700px;
+            margin: 3rem auto 0;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            padding: 3rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group.full-width {
+            grid-column: 1 / -1;
+        }
+
+        label {
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+            color: var(--color-secondary);
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+
+        input,
+        select {
+            padding: 1rem 1.2rem;
+            background: rgba(255, 255, 255, 0.9);
+            border: 2px solid transparent;
+            font-family: var(--font-body);
+            font-size: 1rem;
+            color: var(--color-dark);
+            transition: all 0.3s ease;
+        }
+
+        input:focus,
+        select:focus {
+            outline: none;
+            background: white;
+            border-color: var(--color-secondary);
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 1.3rem;
+            background: var(--color-accent);
+            color: white;
+            border: none;
+            font-family: var(--font-body);
+            font-size: 1.1rem;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-md);
+        }
+
+        .submit-btn:hover {
+            background: #B04942;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        /* ========================================
+           UBICACIÓN Y CONTACTO
+           ======================================== */
+        .location {
+            padding: var(--spacing-xl) 2rem;
+            background: white;
+        }
+
+        .location-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 4rem;
+            margin-top: 3rem;
+        }
+
+        .map-placeholder {
+            width: 100%;
+            height: 450px;
+            background: linear-gradient(135deg, var(--color-cream) 0%, var(--color-secondary) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .map-placeholder::before {
+            content: '📍';
+            font-size: 6rem;
+            opacity: 0.3;
+        }
+
+        .location-info {
+            display: flex;
+            flex-direction: column;
+            gap: 2.5rem;
+        }
+
+        .info-block h3 {
+            font-family: var(--font-display);
+            font-size: 1.8rem;
+            color: var(--color-primary);
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .info-block p {
+            color: #5C3D2E;
+            line-height: 1.8;
+            font-size: 1.05rem;
+        }
+
+        .info-block a {
+            color: var(--color-accent);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .info-block a:hover {
+            color: var(--color-primary);
+        }
+
+        .hours-list {
+            list-style: none;
+            display: grid;
+            gap: 0.8rem;
+        }
+
+        .hours-list li {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.8rem 1.2rem;
+            background: var(--color-warm);
+            color: #5C3D2E;
+        }
+
+        .hours-list strong {
+            color: var(--color-primary);
+        }
+
+        /* ========================================
+           TESTIMONIOS
+           ======================================== */
+        .testimonials {
+            padding: var(--spacing-xl) 2rem;
+            background: var(--color-cream);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .testimonial-card {
+            background: white;
+            padding: 2.5rem;
+            box-shadow: var(--shadow-sm);
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .testimonial-card:hover {
+            box-shadow: var(--shadow-md);
+            transform: translateY(-4px);
+        }
+
+        .testimonial-card::before {
+            content: '"';
+            position: absolute;
+            top: 1rem;
+            left: 1.5rem;
+            font-family: var(--font-display);
+            font-size: 6rem;
+            color: var(--color-secondary);
+            opacity: 0.3;
+            line-height: 1;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            color: #5C3D2E;
+            position: relative;
+            z-index: 2;
+        }
+
+        .testimonial-author {
+            font-family: var(--font-display);
+            color: var(--color-primary);
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .testimonial-rating {
+            color: var(--color-accent);
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        /* ========================================
+           CONTACTO
+           ======================================== */
+        .contact {
+            padding: var(--spacing-xl) 2rem;
+            background: white;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .contact-card {
+            text-align: center;
+            padding: 2rem;
+            background: var(--color-warm);
+            transition: all 0.3s ease;
+        }
+
+        .contact-card:hover {
+            background: var(--color-cream);
+            transform: translateY(-4px);
+        }
+
+        .contact-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        .contact-card h3 {
+            font-family: var(--font-display);
+            font-size: 1.4rem;
+            color: var(--color-primary);
+            margin-bottom: 1rem;
+        }
+
+        .contact-card p,
+        .contact-card a {
+            color: #5C3D2E;
+            text-decoration: none;
+            font-size: 1.05rem;
+            transition: color 0.3s ease;
+        }
+
+        .contact-card a:hover {
+            color: var(--color-accent);
+        }
+
+        /* ========================================
+           FOOTER
+           ======================================== */
+        footer {
+            background: var(--color-dark);
+            color: var(--color-cream);
+            padding: 3rem 2rem 1.5rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 4rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-about h3 {
+            font-family: var(--font-display);
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: var(--color-secondary);
+        }
+
+        .footer-about p {
+            line-height: 1.8;
+            color: rgba(245, 239, 231, 0.8);
+        }
+
+        .footer-links h4 {
+            font-family: var(--font-display);
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: var(--color-secondary);
+        }
+
+        .footer-links ul {
+            list-style: none;
+            display: grid;
+            gap: 0.8rem;
+        }
+
+        .footer-links a {
+            color: rgba(245, 239, 231, 0.8);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--color-secondary);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background: rgba(212, 165, 116, 0.2);
+            color: var(--color-secondary);
+            text-decoration: none;
+            font-size: 1.3rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background: var(--color-secondary);
+            color: var(--color-dark);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(212, 165, 116, 0.2);
+            text-align: center;
+            color: rgba(245, 239, 231, 0.6);
+            font-size: 0.9rem;
+        }
+
+        /* ========================================
+           RESPONSIVE - DISEÑO MÓVIL
+           ======================================== */
+        @media (max-width: 968px) {
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 300px;
+                height: 100vh;
+                background: var(--color-cream);
+                flex-direction: column;
+                padding: 6rem 2rem 2rem;
+                box-shadow: var(--shadow-lg);
+                transition: right 0.4s ease;
+                gap: 2rem;
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
+
+            .about-content,
+            .location-grid,
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero h1 {
+                font-size: 3rem;
+            }
+
+            .section-title {
+                font-size: 2.5rem;
+            }
+
+            .specialties-grid,
+            .testimonials-grid,
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 640px) {
+            :root {
+                --spacing-lg: 3rem;
+                --spacing-xl: 4rem;
+            }
+
+            nav {
+                padding: 1rem;
+            }
+
+            .logo {
+                font-size: 1.5rem;
+            }
+
+            .hero {
+                height: 70vh;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-tagline {
+                font-size: 1.2rem;
+            }
+
+            .about,
+            .menu,
+            .specialties,
+            .reservations,
+            .location,
+            .testimonials,
+            .contact {
+                padding: 3rem 1.5rem;
+            }
+
+            .reservation-form {
+                padding: 2rem 1.5rem;
+            }
+        }
+
+        /* ========================================
+           ANIMACIONES Y EFECTOS ADICIONALES
+           ======================================== */
+        @keyframes slideInFromLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInFromRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* Scroll reveal classes (activadas por JavaScript) */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- ========================================
+         HEADER - NAVEGACIÓN FIJA
+         ======================================== -->
+    <header>
+        <nav>
+            <a href="#" class="logo">La Estación</a>
+            <button class="menu-toggle" aria-label="Abrir menú">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-links">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#menu">Menú</a></li>
+                <li><a href="#reservaciones">Reservaciones</a></li>
+                <li><a href="#nosotros">Nosotros</a></li>
+                <li><a href="#ubicacion">Ubicación</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- ========================================
+         SECCIÓN HERO
+         ======================================== -->
+    <section id="inicio" class="hero">
+        <div class="hero-content">
+            <p class="hero-subtitle">Desde 1960</p>
+            <h1>Restaurant<br>La Estación</h1>
+            <p class="hero-tagline">Tradición ferrocarrilera en cada bocado</p>
+            <a href="#reservaciones" class="hero-cta">Reservar Mesa</a>
+        </div>
+    </section>
+
+    <!-- ========================================
+         SECCIÓN NOSOTROS
+         ======================================== -->
+    <section id="nosotros" class="about reveal">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-subtitle">Nuestra Historia</p>
+                <h2 class="section-title">Un Viaje Culinario</h2>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>
+                        Ubicado frente a la histórica <span class="highlight">Plaza de las Tres Centurias</span> 
+                        en el emblemático Barrio de la Estación, nuestro restaurante rinde homenaje a la 
+                        rica tradición ferrocarrilera de Aguascalientes.
+                    </p>
+                    <p>
+                        Desde hace décadas, servimos <span class="highlight">auténtica cocina mexicana</span> 
+                        en un ambiente familiar donde cada platillo cuenta la historia de nuestra tierra 
+                        y su gente.
+                    </p>
+                    <p>
+                        Nuestra especialidad son los <span class="highlight">desayunos tradicionales</span>, 
+                        elaborados con ingredientes frescos de primera calidad y recetas que han pasado 
+                        de generación en generación.
+                    </p>
+                </div>
+                <div class="about-features">
+                    <div class="feature-card">
+                        <h3>🍳 Desayunos Tradicionales</h3>
+                        <p>Famosos por nuestros huevos rieleros, tacos de nata y chilaquiles caseros preparados al momento.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>🏛️ Ubicación Histórica</h3>
+                        <p>En el corazón del Barrio de la Estación, con vista a la Plaza de las Tres Centurias.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>👨‍👩‍👧‍👦 Ambiente Familiar</h3>
+                        <p>Servicio cálido y atento que te hará sentir como en casa.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+         SECCIÓN MENÚ
+         ======================================== -->
+    <section id="menu" class="menu reveal">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-subtitle">Sabores Auténticos</p>
+                <h2 class="section-title">Nuestro Menú</h2>
+            </div>
+
+            <div class="menu-categories">
+                <!-- Desayunos -->
+                <div class="category">
+                    <h3 class="category-title">Desayunos Tradicionales</h3>
+                    <div class="menu-items">
+                        <div class="menu-item">
+                            <div class="menu-item-info">
+                                <h4 class="menu-item-name">Huevos Rieleros</h4>
+                                <p class="menu-item-description">
+                                    Nuestro platillo insignia: huevos montados en tortilla hecha a mano, 
+                                    bañados con salsa molcajeteada de chile güero con chorizo
+                                </p>
+                            </div>
+                            <span class="menu-item-price">$185</span>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-item-info">
+                                <h4 class="menu-item-name">Tacos de Nata</h4>
+                                <p class="menu-item-description">
+                                    Deliciosa nata fresca con tortillas hechas a mano, acompañados de frijoles y salsa
+                                </p>
+                            </div>
+                            <span class="menu-item-price">$165</span>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-item-info">
+                                <h4 class="menu-item-name">Chilaquiles Tradicionales</h4>
+                                <p class="menu-item-description">
+                                    Totopos artesanales bañados en salsa verde o roja, con crema, queso y cebolla
+                                </p>
+                            </div>
+                            <span class="menu-item-price">$155</span>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-item-info">
+                                <h4 class="menu-item-name">Tamales de Queso</h4>
+                                <p class="menu-item-description">
+                                    Tamales caseros rellenos de queso fresco, servidos con crema
+                                </p>
+                            </div>
+                            <span class="menu-item-price">$145</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Platos Fuertes -->
+                <div class="category">
+                    <h3 class="category-title">Platos Fuertes</h3>
+                    <div class="menu-items">
+                        <div class="menu-item">
+                            <div class="menu-item-info">
+                                <h4 class="menu-item-name">Cecina Aguascalentense</h4>
+                                <p class="menu-item-description">
+                                    Carne de res marinada y asada, acompañada de nopales, frijoles y guacamole
+                                </p>
+                            </div>
+                            <span class="menu-item-price">$245</span>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-item-info">
+                                <h4 class="menu-item-name">Chile en Nogada</h4>
+                                <p class="menu-item-description">
+                                    Chile poblano relleno de picadillo especial, bañado en salsa de nuez (Temporada)
+                                </p>
+                            </div>
+                            <span class="menu-item-price">$285</span>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-item-info">
+                                <h4 class="menu-item-name">Enchiladas Verdes</h4>
+                                <p class="menu-item-description">
+                                    Tortillas bañadas en salsa verde de tomatillo, rellenas de pollo con crema y queso
+                                </p>
+                            </div>
+                            <span class="menu-item-price">$195</span>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-item-info">
+                                <h4 class="menu-item-name">Mole Tradicional</h4>
+                                <p class="menu-item-description">
+                                    Pollo bañado en mole casero con más de 20 ingredientes, arroz y tortillas
+                                </p>
+                            </div>
+                            <span class="menu-item-price">$225</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bebidas -->
+                <div class="category">
+                    <h3 class="category-title">Bebidas</h3>
+                    <div class="menu-items">
+                        <div class="menu-item">
+                            <div class="menu-item-info">
+                                <h4 class="menu-item-name">Café de Olla</h4>
+                                <p class="menu-item-description">
+                                    Café tradicional preparado con piloncillo y canela
+                                </p>
+                            </div>
+                            <span class="menu-item-price">$45</span>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-item-info">
+                                <h4 class="menu-item-name">Chocolate Caliente</h4>
+                                <p class="menu-item-description">
+                                    Chocolate mexicano batido con molinillo, servido bien caliente
+                                </p>
+                            </div>
+                            <span class="menu-item-price">$55</span>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-item-info">
+                                <h4 class="menu-item-name">Aguas Frescas Naturales</h4>
+                                <p class="menu-item-description">
+                                    Jamaica, horchata, limón o fruta de temporada 100% naturales
+                                </p>
+                            </div>
+                            <span class="menu-item-price">$40</span>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-item-info">
+                                <h4 class="menu-item-name">Limonada Mineral</h4>
+                                <p class="menu-item-description">
+                                    Limones frescos con agua mineral y hierbabuena
+                                </p>
+                            </div>
+                            <span class="menu-item-price">$50</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Postres -->
+                <div class="category">
+                    <h3 class="category-title">Postres</h3>
+                    <div class="menu-items">
+                        <div class="menu-item">
+                            <div class="menu-item-info">
+                                <h4 class="menu-item-name">Pan Dulce Artesanal</h4>
+                                <p class="menu-item-description">
+                                    Conchas, cuernitos y bisquets recién horneados
+                                </p>
+                            </div>
+                            <span class="menu-item-price">$35</span>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-item-info">
+                                <h4 class="menu-item-name">Flan Napolitano</h4>
+                                <p class="menu-item-description">
+                                    Flan casero con caramelo natural
+                                </p>
+                            </div>
+                            <span class="menu-item-price">$65</span>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-item-info">
+                                <h4 class="menu-item-name">Pastel del Día</h4>
+                                <p class="menu-item-description">
+                                    Repostería casera variada (pregunta por el sabor del día)
+                                </p>
+                            </div>
+                            <span class="menu-item-price">$75</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+         ESPECIALIDADES
+         ======================================== -->
+    <section class="specialties reveal">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-subtitle">Lo Mejor de Nuestra Casa</p>
+                <h2 class="section-title">Especialidades</h2>
+            </div>
+            <div class="specialties-grid">
+                <div class="specialty-card">
+                    <div class="specialty-image">🍳</div>
+                    <div class="specialty-content">
+                        <h3 class="specialty-name">Huevos Rieleros</h3>
+                        <p class="specialty-description">
+                            El platillo más solicitado de la casa. Huevos estrellados sobre tortilla artesanal, 
+                            bañados con nuestra famosa salsa de chile güero con chorizo. Un homenaje a los 
+                            trabajadores del ferrocarril.
+                        </p>
+                        <span class="specialty-badge">Platillo Insignia</span>
+                    </div>
+                </div>
+                <div class="specialty-card">
+                    <div class="specialty-image">🌮</div>
+                    <div class="specialty-content">
+                        <h3 class="specialty-name">Tacos de Nata</h3>
+                        <p class="specialty-description">
+                            Nata fresca del día servida en tortillas recién hechas. Acompañados de frijoles 
+                            de la olla y salsa molcajeteada. Un sabor que solo encontrarás aquí.
+                        </p>
+                        <span class="specialty-badge">Favorito Local</span>
+                    </div>
+                </div>
+                <div class="specialty-card">
+                    <div class="specialty-image">🌶️</div>
+                    <div class="specialty-content">
+                        <h3 class="specialty-name">Chile en Nogada</h3>
+                        <p class="specialty-description">
+                            Disponible en temporada (agosto-septiembre). Chile poblano relleno de picadillo 
+                            especial, cubierto con salsa de nuez de Castilla y granada. Una joya de la cocina mexicana.
+                        </p>
+                        <span class="specialty-badge">Temporada Especial</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+         RESERVACIONES
+         ======================================== -->
+    <section id="reservaciones" class="reservations reveal">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-subtitle">Planea tu Visita</p>
+                <h2 class="section-title">Reserva tu Mesa</h2>
+            </div>
+            <form class="reservation-form" id="reservationForm">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="nombre">Nombre Completo</label>
+                        <input type="text" id="nombre" name="nombre" required placeholder="Tu nombre">
+                    </div>
+                    <div class="form-group">
+                        <label for="telefono">Teléfono</label>
+                        <input type="tel" id="telefono" name="telefono" required placeholder="449-123-4567">
+                    </div>
+                    <div class="form-group">
+                        <label for="fecha">Fecha</label>
+                        <input type="date" id="fecha" name="fecha" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="hora">Hora</label>
+                        <select id="hora" name="hora" required>
+                            <option value="">Selecciona una hora</option>
+                            <option value="08:00">08:00 AM</option>
+                            <option value="09:00">09:00 AM</option>
+                            <option value="10:00">10:00 AM</option>
+                            <option value="11:00">11:00 AM</option>
+                            <option value="12:00">12:00 PM</option>
+                            <option value="13:00">01:00 PM</option>
+                            <option value="14:00">02:00 PM</option>
+                            <option value="15:00">03:00 PM</option>
+                            <option value="16:00">04:00 PM</option>
+                            <option value="17:00">05:00 PM</option>
+                            <option value="18:00">06:00 PM</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="personas">Número de Personas</label>
+                        <select id="personas" name="personas" required>
+                            <option value="">Selecciona</option>
+                            <option value="1">1 persona</option>
+                            <option value="2">2 personas</option>
+                            <option value="3">3 personas</option>
+                            <option value="4">4 personas</option>
+                            <option value="5">5 personas</option>
+                            <option value="6">6 personas</option>
+                            <option value="7">7+ personas</option>
+                        </select>
+                    </div>
+                </div>
+                <button type="submit" class="submit-btn">Confirmar Reservación</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- ========================================
+         UBICACIÓN
+         ======================================== -->
+    <section id="ubicacion" class="location reveal">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-subtitle">Visítanos</p>
+                <h2 class="section-title">Ubicación</h2>
+            </div>
+            <div class="location-grid">
+                <div class="map-placeholder">
+                    <!-- Aquí se insertaría el iframe de Google Maps -->
+                    <!-- <iframe src="..." width="100%" height="450" frameborder="0" style="border:0;" allowfullscreen="" loading="lazy"></iframe> -->
+                </div>
+                <div class="location-info">
+                    <div class="info-block">
+                        <h3>📍 Dirección</h3>
+                        <p>
+                            Calle 28 de Agosto No. 210<br>
+                            Barrio de la Estación<br>
+                            Aguascalientes, Ags. 20259<br>
+                            México
+                        </p>
+                    </div>
+                    <div class="info-block">
+                        <h3>🕐 Horarios</h3>
+                        <ul class="hours-list">
+                            <li>
+                                <strong>Lunes - Sábado:</strong>
+                                <span>8:00 AM - 7:00 PM</span>
+                            </li>
+                            <li>
+                                <strong>Domingo:</strong>
+                                <span>9:00 AM - 5:00 PM</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="info-block">
+                        <h3>ℹ️ Información</h3>
+                        <p>
+                            <strong>Promedio por persona:</strong> $200 - $350 MXN<br>
+                            <strong>Especialidad:</strong> Desayunos mexicanos<br>
+                            <strong>Ambiente:</strong> Familiar y tradicional
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+         TESTIMONIOS
+         ======================================== -->
+    <section class="testimonials reveal">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-subtitle">Lo Que Dicen</p>
+                <h2 class="section-title">Opiniones de Clientes</h2>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-rating">★★★★★</div>
+                    <p class="testimonial-text">
+                        El servicio es EXCELENTE y los platillos son suculentos. Recomiendo ampliamente 
+                        el tamal de queso y los huevos rieleros. ¡Una delicia!
+                    </p>
+                    <p class="testimonial-author">— María G.</p>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-rating">★★★★★</div>
+                    <p class="testimonial-text">
+                        Si quieres sentir Aguascalientes necesitas estar aquí. Comida tradicional, nata 
+                        con conchas, diferentes tipos de huevos con salsa. Orientado a familias, definitivamente regresaré.
+                    </p>
+                    <p class="testimonial-author">— Roberto L.</p>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-rating">★★★★★</div>
+                    <p class="testimonial-text">
+                        Muy buena comida mexicana, podría haber sido preparada por la abuela de alguien, 
+                        como una gran comida casera. El servicio fue muy rápido y el lugar está impecablemente limpio.
+                    </p>
+                    <p class="testimonial-author">— Jennifer M.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+         CONTACTO
+         ======================================== -->
+    <section id="contacto" class="contact reveal">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-subtitle">Conéctate con Nosotros</p>
+                <h2 class="section-title">Contacto</h2>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-card">
+                    <span class="contact-icon">📞</span>
+                    <h3>Teléfono</h3>
+                    <p><a href="tel:+524499186664">449-918-6664</a></p>
+                </div>
+                <div class="contact-card">
+                    <span class="contact-icon">💬</span>
+                    <h3>WhatsApp</h3>
+                    <p><a href="https://wa.me/524499186664" target="_blank">Enviar Mensaje</a></p>
+                </div>
+                <div class="contact-card">
+                    <span class="contact-icon">📧</span>
+                    <h3>Email</h3>
+                    <p><a href="mailto:info@laestacion.com">info@laestacion.com</a></p>
+                </div>
+                <div class="contact-card">
+                    <span class="contact-icon">📱</span>
+                    <h3>Redes Sociales</h3>
+                    <p>
+                        <a href="#" target="_blank">Facebook</a> • 
+                        <a href="#" target="_blank">Instagram</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+         FOOTER
+         ======================================== -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-about">
+                <h3>Restaurant La Estación</h3>
+                <p>
+                    Desde hace décadas, servimos auténtica cocina mexicana en el corazón del 
+                    Barrio de la Estación. Nuestro compromiso es ofrecer experiencias 
+                    gastronómicas memorables con el sabor tradicional de Aguascalientes.
+                </p>
+                <div class="social-links">
+                    <a href="#" aria-label="Facebook">f</a>
+                    <a href="#" aria-label="Instagram">📷</a>
+                    <a href="#" aria-label="TripAdvisor">✈️</a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <h4>Enlaces Rápidos</h4>
+                <ul>
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#nosotros">Nosotros</a></li>
+                    <li><a href="#menu">Menú</a></li>
+                    <li><a href="#reservaciones">Reservaciones</a></li>
+                    <li><a href="#ubicacion">Ubicación</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Información</h4>
+                <ul>
+                    <li><a href="#">Aviso de Privacidad</a></li>
+                    <li><a href="#">Términos y Condiciones</a></li>
+                    <li><a href="#">Política de Cookies</a></li>
+                    <li><a href="#">Trabaja con Nosotros</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Restaurant La Estación. Todos los derechos reservados. Aguascalientes, México.</p>
+        </div>
+    </footer>
+
+    <!-- ========================================
+         JAVASCRIPT - FUNCIONALIDAD INTERACTIVA
+         ======================================== -->
+    <script>
+        // ==========================================
+        // MENÚ MÓVIL - TOGGLE
+        // ==========================================
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Cerrar menú al hacer clic en un enlace
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // ==========================================
+        // HEADER - EFECTO AL HACER SCROLL
+        // ==========================================
+        const header = document.querySelector('header');
+        let lastScroll = 0;
+
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+
+            if (currentScroll > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+
+            lastScroll = currentScroll;
+        });
+
+        // ==========================================
+        // SCROLL REVEAL - ANIMACIONES AL SCROLLEAR
+        // ==========================================
+        const reveals = document.querySelectorAll('.reveal');
+
+        const revealOnScroll = () => {
+            const windowHeight = window.innerHeight;
+            
+            reveals.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const revealPoint = 100;
+
+                if (elementTop < windowHeight - revealPoint) {
+                    element.classList.add('active');
+                }
+            });
+        };
+
+        window.addEventListener('scroll', revealOnScroll);
+        revealOnScroll(); // Ejecutar al cargar la página
+
+        // ==========================================
+        // FORMULARIO DE RESERVACIONES
+        // ==========================================
+        const reservationForm = document.getElementById('reservationForm');
+
+        reservationForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            // Obtener valores del formulario
+            const nombre = document.getElementById('nombre').value;
+            const telefono = document.getElementById('telefono').value;
+            const fecha = document.getElementById('fecha').value;
+            const hora = document.getElementById('hora').value;
+            const personas = document.getElementById('personas').value;
+
+            // En un escenario real, aquí enviarías los datos a un servidor
+            // Por ahora, mostraremos un mensaje de confirmación
+
+            alert(`¡Reservación Confirmada!
+
+Nombre: ${nombre}
+Teléfono: ${telefono}
+Fecha: ${fecha}
+Hora: ${hora}
+Personas: ${personas}
+
+Te contactaremos pronto para confirmar tu reservación.
+¡Gracias por elegir Restaurant La Estación!`);
+
+            // Resetear el formulario
+            reservationForm.reset();
+        });
+
+        // ==========================================
+        // SMOOTH SCROLL PARA NAVEGACIÓN
+        // ==========================================
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                
+                if (target) {
+                    const headerOffset = 80;
+                    const elementPosition = target.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // ==========================================
+        // ESTABLECER FECHA MÍNIMA EN RESERVACIONES
+        // ==========================================
+        const fechaInput = document.getElementById('fecha');
+        const today = new Date().toISOString().split('T')[0];
+        fechaInput.setAttribute('min', today);
+
+        // ==========================================
+        // ANIMACIÓN DE ENTRADA INICIAL
+        // ==========================================
+        window.addEventListener('load', () => {
+            document.body.style.opacity = '0';
+            setTimeout(() => {
+                document.body.style.transition = 'opacity 0.5s ease';
+                document.body.style.opacity = '1';
+            }, 100);
+        });
+    </script>
+</body>
+</html>
